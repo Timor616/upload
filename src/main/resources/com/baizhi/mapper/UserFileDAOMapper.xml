@@ -13,5 +13,18 @@
 
     </insert>
 
+    <select id="findById" parameterType="String" resultType="com.baizhi.entity.UserFile">
+        select id,oldFileName,newFileName,ext,path ,size, type,isImg,downcounts,uploadTime,userId from t_files
+        where id = #{id}
+    </select>
+
+    <update id="update" parameterType="com.baizhi.entity.UserFile" >
+        update t_files set downcounts=#{downcounts} where id =#{id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete from t_files where id = #{id}
+    </delete>
+
 
 </mapper>

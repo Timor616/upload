@@ -13,4 +13,10 @@ public interface UserFileDAO {
 
     //保存用户的文件记录
     void save(UserFile userFile);
+
+    UserFile findById(String id);
+
+    void update(UserFile userFile);
+
+    void delete(String id);
 }

@@ -30,4 +30,6 @@ public class UserFile {
     private Integer downcounts;
     private Date uploadTime;
     private Integer userId;//用户外键
+
+
 }

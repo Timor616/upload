@@ -24,9 +24,27 @@ public class UserFileServiceImpl implements UserFileService {
 
     @Override
     public void save(UserFile userFile) {
-       // userFile.setIsImg();
+        // 当类型中含有image时
+        String isImg = userFile.getType().startsWith("image")?"yes":"no";
+        userFile.setIsImg(isImg);
         userFile.setDowncounts(0);
         userFile.setUploadTime(new Date());
         userFileDAO.save(userFile);
+    }
+
+    @Override
+    public void delete(String id) {
+        userFileDAO.delete(id);
+    }
+
+    @Override
+    public void update(UserFile userFile) {
+        userFileDAO.update(userFile);
+    }
+
+    @Override
+    public UserFile findById(String id) {
+        UserFile userFile = userFileDAO.findById(id);
+        return userFile;
     }
 }
