@@ -4,7 +4,7 @@
 
 
 <!--   login-->
-    <select id="login" parameterType="User" resultType="User">
+    <select id="login" parameterType="com.baizhi.entity.User" resultType="com.baizhi.entity.User">
         select id, username, password
         from t_user
         where username = #{username}

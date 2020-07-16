@@ -11,7 +11,7 @@
  Target Server Version : 50729
  File Encoding         : 65001
 
- Date: 15/07/2020 20:54:50
+ Date: 15/07/2020 23:25:08
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,10 @@ CREATE TABLE `t_files`  (
   `isImg` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `downcounts` int(6) DEFAULT NULL,
   `uploadTime` datetime(0) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `userId` int(8) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `userId`(`userId`) USING BTREE,
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `t_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -45,5 +48,11 @@ CREATE TABLE `t_user`  (
   `password` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_user
+-- ----------------------------
+INSERT INTO `t_user` VALUES (1, 'xiaochen', '123456');
+INSERT INTO `t_user` VALUES (2, 'zhangsan', '123456');
 
 SET FOREIGN_KEY_CHECKS = 1;
